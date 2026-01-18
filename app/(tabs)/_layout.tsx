@@ -1,33 +1,78 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'react-native';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: '#007AFF',   // iOS blue
+        tabBarInactiveTintColor: '#8E8E93',
+      }}
+    >
+      <Tabs.Screen 
+        name="list" 
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="list" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen 
+        name="cranes" 
+        options={{
+          tabBarIcon: ({ size, color }) =>
+             ( <Image 
+              source={ require('../../assets/images/crane.png') } 
+              resizeMode='contain'
+              style={{
+                width: size,
+                height: size,
+                tintColor: color,
+              }}
+            /> ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="mood"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="add-circle" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen 
+        name="boats" 
+        options={{
+          tabBarIcon: ({ size, color }) =>
+             ( <Image 
+              source={ require('../../assets/images/boat.png') } 
+              resizeMode='contain'
+              style={{
+                width: size,
+                height: size,
+                tintColor: color,
+              }}
+            /> ),
+        }}
+      />
+      <Tabs.Screen 
+        name="profile" 
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+        }}
+      />
+
+
+      {/* sibling, but not available directly */}
+      <Tabs.Screen
+        name="feel"
+        options={{
+          href: null, // hides it from the tab bar
         }}
       />
     </Tabs>
