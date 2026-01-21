@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, InteractionManager } from 'react-native';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 import { router } from 'expo-router';
@@ -68,11 +68,14 @@ export default function MoodPage() {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.push('/feel')}>
+      <Pressable onPress={() => {
+        requestAnimationFrame(() => {
+          router.push('/feel');
+        });
+      }}>
         <Animated.View
           style={[
-            styles.orb,
-            {
+            styles.orb, {
               transform: [{ scale }],
               opacity: glow,
             },

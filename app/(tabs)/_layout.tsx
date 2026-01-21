@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 
 export default function TabsLayout() {
   return (
@@ -68,6 +68,7 @@ export default function TabsLayout() {
       />
 
 
+        
       {/* sibling, but not available directly */}
       <Tabs.Screen
         name="feel"
@@ -75,6 +76,7 @@ export default function TabsLayout() {
           href: null, // hides it from the tab bar
         }}
       />
+
     </Tabs>
   );
 }
