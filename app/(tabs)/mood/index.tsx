@@ -70,7 +70,7 @@ export default function MoodPage() {
     <View style={styles.container}>
       <Pressable onPress={() => {
         requestAnimationFrame(() => {
-          router.push('/feel');
+          router.push('/mood/feel');
         });
       }}>
         <Animated.View

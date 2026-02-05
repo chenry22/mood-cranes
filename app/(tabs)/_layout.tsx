@@ -67,16 +67,6 @@ export default function TabsLayout() {
         }}
       />
 
-
-        
-      {/* sibling, but not available directly */}
-      <Tabs.Screen
-        name="feel"
-        options={{
-          href: null, // hides it from the tab bar
-        }}
-      />
-
     </Tabs>
   );
 }

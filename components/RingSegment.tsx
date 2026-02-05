@@ -33,7 +33,7 @@ export default function RingSegment({ radius, startAngle, sweepAngle, color, lab
   `;
 
   const labelAngle = startAngle + sweepAngle / 2;
-  var labelRadius = radius > 300 ? radius - 80 : radius * 0.7; // a little inside the ring
+  var labelRadius = radius > 300 ? radius - 100 : radius * 0.7; // a little inside the ring
 
   if (Platform.OS === 'ios') {
     labelRadius = radius > 300 ? radius - 120 : radius * 0.7;
@@ -44,8 +44,10 @@ export default function RingSegment({ radius, startAngle, sweepAngle, color, lab
 
   return (<>
             <Path d={path} fill={color}
+              opacity={color === 'gray' ? 0.9 : 1.0}
               onPress={onPress}/>
             <Text
+              opacity={color === 'gray' ? 0.8 : 1.0}
               x={labelX}
               y={labelY}
               fill="#fff"
